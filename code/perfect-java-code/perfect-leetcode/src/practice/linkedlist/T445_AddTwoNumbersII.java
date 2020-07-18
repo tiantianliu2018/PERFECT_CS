@@ -1,4 +1,4 @@
-package bytedance.linkedlist;
+package practice.linkedlist;
 
 import java.util.Stack;
 

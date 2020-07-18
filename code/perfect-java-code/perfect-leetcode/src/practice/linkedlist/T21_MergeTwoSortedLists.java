@@ -1,4 +1,4 @@
-package bytedance.linkedlist;
+package practice.linkedlist;
 
 /**
  * @author Kelly
