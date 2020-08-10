@@ -38,6 +38,9 @@ public class T1 {
         printByZigZag(root);
     }
 
+    private static void printByZigZag(TreeNode root) {
+    }
+
     private static void printByLevel(TreeNode root) {
         if (root == null) return;
         Queue<TreeNode> queue = new LinkedList<>();
