@@ -1,5 +1,6 @@
 package backtrack;
 
+<<<<<<< HEAD
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -56,5 +57,10 @@ public class T13_MovingCount {
             }
         }
         return res;
+=======
+public class T13_MovingCount {
+    public int movingCount(int m, int n, int k) {
+
+>>>>>>> ce7d2a6ac831b026408983085b541c36b2d84960
     }
 }
