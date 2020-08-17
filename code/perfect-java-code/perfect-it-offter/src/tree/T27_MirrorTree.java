@@ -5,6 +5,11 @@ package tree;
  */
 public class T27_MirrorTree {
     public TreeNode mirrorTree(TreeNode root) {
-
+        if (root == null) return root;
+        TreeNode left = mirrorTree(root.left);
+        TreeNode right = mirrorTree(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
     }
 }
