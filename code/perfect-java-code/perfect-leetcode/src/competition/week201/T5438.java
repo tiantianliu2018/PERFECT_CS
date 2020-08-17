@@ -10,17 +10,18 @@ public class T5438 {
         System.out.println(s);
     }
     public static String makeGood(String s) {
-        char[] charArray = s.toCharArray();
-        for (int i = 0; i < s.length() - 1; i++) {
-            char c1 = charArray[i];
-            char c2 = charArray[i + 1];
-            if ((Character.isLowerCase(c1) && Character.isUpperCase(c2))) {
-                String s1 = s.substring(0, i);
-                String s2 = s.substring(i + 2);
-                s = s1 + s2;
+        StringBuilder sb = new StringBuilder(s);
+        while (true) {
+            boolean flag = true;
+            for (int i = 0; i < sb.length(); i++) {
+                if (sb.charAt(i) == sb.charAt(i - 1) + 32 || sb.charAt(i) == sb.charAt(i - 1) - 32) {
+                    sb.replace(i - 1, i + 1, "");
+                    flag = false;
+                }
             }
+            if (flag) break;
         }
-        return s;
+        return sb.toString();
     }
 
 }
