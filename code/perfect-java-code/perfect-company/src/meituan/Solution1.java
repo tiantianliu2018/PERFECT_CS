@@ -37,11 +37,11 @@ public class Solution1 {
             num /= 10;
         }
         return res;
-        StringBuilder s = new StringBuilder(num);
-        s.reverse();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '0') s.replace(i, i + 1, "");
-        }
-        return Integer.parseInt(s.toString());
+//        StringBuilder s = new StringBuilder(num);
+//        s.reverse();
+//        for (int i = 0; i < s.length(); i++) {
+//            if (s.charAt(i) == '0') s.replace(i, i + 1, "");
+//        }
+//        return Integer.parseInt(s.toString());
     }
 }
