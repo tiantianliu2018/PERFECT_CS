@@ -16,9 +16,9 @@ public class AlternatePrint {
                 // 当 flag 为 false，阻塞线程
                 while (!flag) {
                     try {
-                        System.out.println("Print1: wait before");
+//                        System.out.println("Print1: wait before");
                         wait();
-                        System.out.println("Print2: wait after");
+//                        System.out.println("Print2: wait after");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -32,9 +32,9 @@ public class AlternatePrint {
             for (int i = 1; i <= 50; i++) {
                 while (flag) {
                     try {
-                        System.out.println("Print2: wait before");
+//                        System.out.println("Print2: wait before");
                         wait();
-                        System.out.println("Print2: wait after");
+//                        System.out.println("Print2: wait after");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

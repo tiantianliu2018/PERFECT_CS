@@ -3,6 +3,7 @@ package array;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * @author Kelly
@@ -40,5 +41,25 @@ public class T40_GetLeastNumbers {
         arr[pivotIndex] = arr[left];
         arr[left] = pivot;
         return left;
+    }
+    // 维持一个 k 个元素的堆
+    public int[] getLeastNumbers1(int[] arr, int k) {
+        if (arr == null || arr.length == 0 || arr.length < k) return new int[0];
+        // 默认小顶堆
+        PriorityQueue<Integer> heap = new PriorityQueue<>(k, (a, b) -> (b - a));
+        for (int num : arr) {
+            if (heap.size() < k) heap.offer(num);
+            else {
+                if (num < heap.peek()) {
+                    heap.offer(num);
+                    heap.poll();
+                }
+            }
+        }
+        int[] res = new int[k];
+        for (int i = 0; i < k; i++) {
+            res[i] = heap.poll();
+        }
+        return res;
     }
 }

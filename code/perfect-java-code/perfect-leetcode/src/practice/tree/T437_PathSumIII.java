@@ -10,14 +10,14 @@ package practice.tree;
 public class T437_PathSumIII {
     public int pathSum(TreeNode root, int sum) {
         if (root == null) return 0;
-        return dfs(root, sum) + dfs(root.left, sum) + dfs(root.right, sum);
+        return dfs(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
     }
-    private int dfs(TreeNode node, int sum) {
-        if (node == null) return 0;
+    public int dfs(TreeNode root, int sum) {
+        if (root == null) return 0;
         int count = 0;
-        if (node.val == sum) count++;
-        count += dfs(node.left, sum - node.val);
-        count += dfs(node.right, sum - node.val);
+        if (root.val == sum) count++;
+        count += dfs(root.left, sum - root.val);
+        count += dfs(root.right, sum - root.val);
         return count;
     }
 }

@@ -9,7 +9,7 @@ package string;
 public class T20_IsNumber {
     /**
      *  数字的格式可以用 A[.[B]][e|EC] 或者 .B[e|EC] 表示，
-     *  其中 A和 C都是整数（可以有正负号，也可以没有），而 B是一个无符号整数
+     *  其中 A 和 C 都是整数（可以有正负号，也可以没有），而 B 是一个无符号整数
      */
     int idx = 0;
     public boolean isNumber(String s) {
@@ -26,6 +26,7 @@ public class T20_IsNumber {
         if (idx < s.length() && (s.charAt(idx) == 'E' || s.charAt(idx) == 'e')) {
             idx++;
             boolean C = scanInteger(s);
+            // C 不是整数，直接返回 false
             if (!C) return false;
         }
         // 返回是否遍历到末尾，并且有 A 或者是 B
@@ -33,9 +34,11 @@ public class T20_IsNumber {
     }
 
     private boolean scanInteger(String s) {
+        // 找符号
         if (idx < s.length() && (s.charAt(idx) == '+' || s.charAt(idx) == '-')) {
             idx++;
         }
+        // 符号后面是否是无符号整数
         return scanUnsignedInteger(s);
     }
 

@@ -24,12 +24,13 @@ public class T110_BalancedBinaryTree {
     }
 
     /**
-     * 自底向下的判断，先判断左右子树是否平衡，然后判断根节点，只有有一个不平衡，就不是平衡二叉树
+     * 自底向下的判断，先判断左右子树是否平衡，然后判断根节点，只要有一个不平衡，就不是平衡二叉树
      */
     public boolean isBalanced1(TreeNode root) {
         if (root == null) return true;
         return recur(root) != -1;
     }
+    // 返回树的高度的同时，判断当前子树是否是平衡树
     private int recur(TreeNode root) {
         if (root == null) return 0;
         int left = recur(root.left);
