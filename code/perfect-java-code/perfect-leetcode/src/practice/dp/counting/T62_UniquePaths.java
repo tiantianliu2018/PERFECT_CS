@@ -1,4 +1,4 @@
-package practice.dp;
+package practice.dp.counting;
 
 /**
  * @author Kelly
@@ -9,7 +9,7 @@ public class T62_UniquePaths {
      * 一维动规
      */
     public int uniquePaths1(int m, int n) {
-        if (m == 0 || n == 0) return 1;
+        if (m == 0                  || n == 0) return 1;
         int[] dp = new int[n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
