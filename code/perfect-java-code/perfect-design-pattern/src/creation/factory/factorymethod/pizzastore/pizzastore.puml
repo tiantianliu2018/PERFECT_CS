@@ -1,0 +1,28 @@
+@startuml
+
+abstract class Pizza {
+    void prepare()
+    void bake()
+    void cut()
+    void box()
+}
+
+Pizza <|-- BJCheesePizza
+Pizza <|-- LDCheesePizza
+Pizza <|-- BJPepperPizza
+Pizza <|-- LDPepperPizza
+
+class OrderPizza {
+    abstract Pizza createPizza()
+}
+class BJOrderPizza
+class LDOrderPizza
+
+OrderPizza <|-- BJOrderPizza
+OrderPizza <|-- LDOrderPizza
+BJCheesePizza <.. BJOrderPizza
+BJPepperPizza <.. BJOrderPizza
+LDCheesePizza <.. LDOrderPizza
+LDPepperPizza <.. LDOrderPizza
+
+@enduml

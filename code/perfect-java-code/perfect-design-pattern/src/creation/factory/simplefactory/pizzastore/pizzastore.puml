@@ -1,0 +1,22 @@
+@startuml
+
+abstract class Pizza
+class OrderPizza
+class PizzaStore
+
+Pizza <|-- CheesePizza
+Pizza <|-- GreekPizza
+
+Pizza <.. OrderPizza
+CheesePizza <.. OrderPizza
+GreekPizza <.. OrderPizza
+OrderPizza <.. PizzaStore
+
+abstract class Pizza {
+    prepare()
+    bake()
+    cut()
+    box()
+}
+
+@enduml
