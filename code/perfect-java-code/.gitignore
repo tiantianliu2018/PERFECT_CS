@@ -3,4 +3,5 @@
 /*.iml
 /pom.xml
 /perfect-big-data-mapreduce/pom.xml
+/perfect-big-data-mapreduce/target/
 /production
