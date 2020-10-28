@@ -1,8 +1,6 @@
 package practice.tree;
 
 import javafx.util.Pair;
-import sun.plugin.javascript.navig.Link;
-
 import java.util.Stack;
 
 /**
@@ -35,6 +33,22 @@ public class T112_PathSum {
             if (node.left == null && node.right == null && target == node.val) return true;
             if (node.left != null) stack.push(new Pair<>(node.left, target - node.val));
             if (node.right != null) stack.push(new Pair<>(node.right, target - node.val));
+        }
+        return false;
+    }
+
+    public boolean hashPathSum2(TreeNode root, int sum) {
+        if (root == null) return false;
+        // 用于存储当前节点以及还剩的路径和
+        Stack<Pair<TreeNode, Integer>> stack = new Stack<>();
+        stack.push(new Pair<>(root, sum));
+        while (!stack.isEmpty()) {
+            Pair<TreeNode, Integer> pair = stack.pop();
+            TreeNode node = pair.getKey();
+            int val = pair.getValue();
+            if (node.left == null && node.right == null && node.val == val) return true;
+            if (node.left != null) stack.push(new Pair<>(node.left, val - node.val));
+            if (node.right != null) stack.push(new Pair<>(node.right, val - node.val));
         }
         return false;
     }

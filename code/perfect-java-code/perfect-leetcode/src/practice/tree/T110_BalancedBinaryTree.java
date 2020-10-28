@@ -24,7 +24,7 @@ public class T110_BalancedBinaryTree {
     }
 
     /**
-     * 自底向下的判断，先判断左右子树是否平衡，然后判断根节点，只要有一个不平衡，就不是平衡二叉树
+     * 自底向上的判断，先判断左右子树是否平衡，然后判断根节点，只要有一个不平衡，就不是平衡二叉树
      */
     public boolean isBalanced1(TreeNode root) {
         if (root == null) return true;

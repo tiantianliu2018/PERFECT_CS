@@ -67,4 +67,24 @@ public class T23_MergeKSortedLists {
         if (l2 != null) curr.next = l2;
         return dummy.next;
     }
+
+    // 再次练习
+    public ListNode mergeLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+        int n = lists.length;
+        PriorityQueue<ListNode> heap = new PriorityQueue<>(n, (a, b) -> (a.val - b.val));
+        for (int i = 0; i < n; i++) {
+            if (lists[i] != null) heap.offer(lists[i]);
+        }
+        ListNode dummy = new ListNode(0), curr = dummy;
+        while (!heap.isEmpty()) {
+            ListNode node = heap.poll();
+            curr.next = node;
+            curr = curr.next;
+            if (node.next != null) {
+                heap.offer(node.next);
+            }
+        }
+        return dummy.next;
+    }
 }

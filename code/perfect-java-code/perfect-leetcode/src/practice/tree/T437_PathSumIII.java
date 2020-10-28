@@ -20,4 +20,18 @@ public class T437_PathSumIII {
         count += dfs(root.right, sum - root.val);
         return count;
     }
+
+    public int pathSum1(TreeNode root, int sum) {
+        if (root == null) return 0;
+        return pathSum1(root.left, sum) + pathSum1(root.right, sum) + search(root, sum);
+    }
+
+    private int search(TreeNode root, int sum) {
+        if (root == null) return 0;
+        int count = 0;
+        if (root.val == sum) count++;
+        count += search(root.left, sum - root.val);
+        count += search(root.right, sum - root.val);
+        return count;
+    }
 }
