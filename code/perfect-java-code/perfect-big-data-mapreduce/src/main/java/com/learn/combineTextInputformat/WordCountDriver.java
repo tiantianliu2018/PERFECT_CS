@@ -1,9 +1,10 @@
-package com.learn.wordcount;
+package com.learn.combineTextInputformat;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.CombineTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
@@ -44,9 +45,12 @@ public class WordCountDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
+        job.setInputFormatClass(CombineTextInputFormat.class);
+        CombineTextInputFormat.setMaxInputSplitSize(job, 4194304);
+
         // 设置输入输出路径
-        FileInputFormat.setInputPaths(job, new Path("perfect-big-data-mapreduce/src/main/resources/files/words.txt"));
-        FileOutputFormat.setOutputPath(job, new Path("perfect-big-data-mapreduce/src/main/resources/wordcount"));
+        FileInputFormat.setInputPaths(job, new Path("perfect-big-data-mapreduce/src/main/resources/files/combine"));
+        FileOutputFormat.setOutputPath(job, new Path("perfect-big-data-mapreduce/src/main/resources/combine1"));
 
         // 提交任务
 //        job.submit();

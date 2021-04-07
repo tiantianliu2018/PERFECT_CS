@@ -5,3 +5,4 @@
 /perfect-big-data-mapreduce/pom.xml
 /perfect-big-data-mapreduce/target/
 /production
+/perfect-big-data-mapreduce/src/main/resources/*

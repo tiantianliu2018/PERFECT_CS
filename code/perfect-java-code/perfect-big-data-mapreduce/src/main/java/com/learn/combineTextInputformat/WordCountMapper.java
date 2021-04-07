@@ -1,4 +1,4 @@
-package com.learn.wordcount;
+package com.learn.combineTextInputformat;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
