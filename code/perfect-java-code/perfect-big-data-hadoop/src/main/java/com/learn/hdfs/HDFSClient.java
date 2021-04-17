@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
@@ -53,6 +54,13 @@ public class HDFSClient {
     public void testPut() throws Exception {
         // 参数解读：1：删除原数据；2：是否删除原数据；3：原数据路径；4：目标路径
         fileSystem.copyFromLocalFile(false, false, new Path("/usr/local/Cellar/hadoop/3.2.1_1/sunwukong.txt"), new Path("/xiyou/huaguoshan/"));
+    }
+
+    @Test
+    public void testPut2() throws IOException {
+        FSDataOutputStream fos = fileSystem.create(new Path("/input"));
+
+        fos.write("hello world".getBytes());
     }
 
     @Test

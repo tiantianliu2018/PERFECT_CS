@@ -1,6 +1,6 @@
-package com.learn.writable;
+package com.learn.partitionerandwritableComparable;
 
-import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * 3. 重写序列化和反序列化方法
  * 4. 重写 toString 方法
  */
-public class FlowBean implements Writable {
+public class FlowBean implements WritableComparable<FlowBean> {
     private long upFlow;
     private long downFlow;
     private long sumFlow;
@@ -66,5 +66,16 @@ public class FlowBean implements Writable {
     @Override
     public String toString() {
         return upFlow + "\t" + downFlow + "\t" + sumFlow;
+    }
+
+    public int compareTo(FlowBean o) {
+        // 按总流量的倒序排序
+        if (this.sumFlow > o.sumFlow) {
+            return -1;
+        } else if (this.sumFlow < o.sumFlow) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

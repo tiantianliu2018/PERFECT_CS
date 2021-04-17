@@ -1,0 +1,44 @@
+package com.learn.writableComparable;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+
+/**
+ * @author Kelly
+ * @create 2021-04-06 15:45
+ */
+public class FlowDriver {
+    public static void main(String[] args) throws Exception {
+        // 1. 获取 job 对象
+        Configuration conf = new Configuration();
+        Job job = Job.getInstance(conf);
+
+        // 2. 设置 jar 包
+        job.setJarByClass(FlowDriver.class);
+
+        // 3. 关联 mapper 和 reducer
+        job.setMapperClass(FlowMapper.class);
+        job.setReducerClass(FlowReducer.class);
+
+        // 4. 设置 mapper 输出的 key 和 value 类型
+        job.setMapOutputKeyClass(FlowBean.class);
+        job.setMapOutputValueClass(Text.class);
+
+        // 5. 设置最终输出的 key 和 value 类型
+        job.setOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(FlowBean.class);
+
+        // 6. 设置数据的输入、输出路径
+        FileInputFormat.setInputPaths(job, new Path("perfect-big-data-mapreduce/src/main/resources/flowout"));
+        FileOutputFormat.setOutputPath(job, new Path("perfect-big-data-mapreduce/src/main/resources/flowout2"));
+
+        // 7. 提交 job
+        boolean result = job.waitForCompletion(true);
+        System.exit(result ? 0 : 1);
+    }
+}

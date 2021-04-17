@@ -1,4 +1,4 @@
-package com.learn.writable;
+package com.learn.partitioner;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -26,11 +26,10 @@ public class FlowMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
         // 提取数据字段
         String phone = fields[1];
         long up = Long.parseLong(fields[fields.length - 3]);
-        long down = Long.parseLong(fields[fields.length - 2]);
+        long down = Long.parseLong(fields[fields.length - 3]);
 
         // 封装输出的 key 和 value
         outKey.set(phone);
-
         outValue.setUpFlow(up);
         outValue.setDownFlow(down);
         outValue.setSumFlow();

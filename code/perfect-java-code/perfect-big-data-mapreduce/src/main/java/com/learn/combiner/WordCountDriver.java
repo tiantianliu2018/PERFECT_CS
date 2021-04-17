@@ -1,12 +1,8 @@
-package com.learn.wordcount;
+package com.learn.combiner;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.io.compress.BZip2Codec;
-import org.apache.hadoop.io.compress.CompressionCodec;
-import org.apache.hadoop.io.compress.DefaultCodec;
-import org.apache.hadoop.io.compress.GzipCodec;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -30,14 +26,6 @@ public class WordCountDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         // 获取 Job 对象
         Configuration conf = new Configuration();
-
-        /*
-        // 开启 map 端输出压缩
-        conf.setBoolean("mapreduce.map.output.compress",true);
-        // 设置 map 端输出压缩方式
-        conf.setClass("mapreduce.map.output.compress.codec", BZip2Codec.class, CompressionCodec.class);
-        */
-
         Job job = Job.getInstance(conf);
 
         // 设置 jar 包存储位置
@@ -56,16 +44,11 @@ public class WordCountDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
+        job.setCombinerClass(WordCountCombiner.class);
+
         // 设置输入输出路径
         FileInputFormat.setInputPaths(job, new Path("perfect-big-data-mapreduce/src/main/resources/files/words.txt"));
-        FileOutputFormat.setOutputPath(job, new Path("perfect-big-data-mapreduce/src/main/resources/wordcount_out_default"));
-
-        // 设置 reduce 端输出压缩开启
-        FileOutputFormat.setCompressOutput(job, true);
-        // 设置压缩方式
-        FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);
-        FileOutputFormat.setOutputCompressorClass(job, GzipCodec.class);
-        FileOutputFormat.setOutputCompressorClass(job, DefaultCodec.class);
+        FileOutputFormat.setOutputPath(job, new Path("perfect-big-data-mapreduce/src/main/resources/combiner2"));
 
         // 提交任务
 //        job.submit();

@@ -1,4 +1,4 @@
-package com.learn.writable;
+package com.learn.partitioner;
 
 import org.apache.hadoop.io.Writable;
 
@@ -65,6 +65,10 @@ public class FlowBean implements Writable {
 
     @Override
     public String toString() {
-        return upFlow + "\t" + downFlow + "\t" + sumFlow;
+        return "FlowBean{" +
+                "upFlow=" + upFlow +
+                ", downFlow=" + downFlow +
+                ", sumFlow=" + sumFlow +
+                '}';
     }
 }
