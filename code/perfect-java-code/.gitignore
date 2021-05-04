@@ -7,5 +7,6 @@
 /perfect-big-data-mapreduce/target/*
 /production
 /perfect-big-data-mapreduce/src/main/resources/*
-/perfect-big-data-spark/target/*
-/perfect-scala/target/*
+#/perfect-big-data-spark/target/*
+#/perfect-scala/target/*
+**/target

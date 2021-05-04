@@ -1,7 +1,0 @@
-Hello World
-Hello Hadoop
-Hello MapReduce
-Hello Java
-Hello Kelly
-Java Perfect
-Code Perfect
