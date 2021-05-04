@@ -9,4 +9,4 @@
 /perfect-big-data-mapreduce/src/main/resources/*
 #/perfect-big-data-spark/target/*
 #/perfect-scala/target/*
-**/target
+**/target/*
