@@ -8,9 +8,37 @@
     <artifactId>perfect-scala</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--定义常量-->
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <encoding>UTF-8</encoding>
+        <scala.version>2.11.8</scala.version>
+        <scala.compat.version>2.11</scala.compat.version>
+        <akka.version>2.4.20</akka.version>
     </properties>
+
+    <dependencies>
+        <!--scala 依赖-->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <!--akka 依赖-->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.11</artifactId>
+            <version>2.4.20</version>
+        </dependency>
+
+        <!-- 多进程之间的 Actor 通信 -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-remote_2.11</artifactId>
+            <version>2.4.20</version>
+        </dependency>
+    </dependencies>
 
 </project>
