@@ -10,3 +10,5 @@
 #/perfect-big-data-spark/target/*
 #/perfect-scala/target/*
 **/target/*
+**/source/*
+**/.DS_Strore
